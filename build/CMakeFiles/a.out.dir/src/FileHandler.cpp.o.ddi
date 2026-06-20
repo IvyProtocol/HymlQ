@@ -1,9 +1,0 @@
-{
-  "revision": 0,
-  "rules": [
-    {
-      "primary-output": "CMakeFiles/a.out.dir/src/FileHandler.cpp.o"
-    }
-  ],
-  "version": 1
-}
