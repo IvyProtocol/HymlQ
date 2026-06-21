@@ -271,9 +271,45 @@ namespace Transpiler
 
                           if
                           (
-                            PropIsArr ||
+                            PropIsArr
+                          ) {
+
+                            const auto& NextPropNode = Arena.GetNode(PropNode.NextSiblingIndx);
+                            const auto& NestedArray = std::get<TOML::ArrayNode>(NextPropNode.Payload);
+
+                            auto ElemIdx = NestedArray.FirstChildIndx;
+                            std::string ElemStr = "(";
+
+                            while
+                            (
+                              ElemIdx != TOML::NodeIdx::None
+                            ) {
+
+                              const auto& EleNode = Arena.GetNode(ElemIdx);
+                              const auto& ElePayload = std::get<TOML::KeyValueNode>(EleNode.Payload);
+
+                              ElemStr.append(ElePayload.Value).append(" ");
+                              ElemIdx = EleNode.NextSiblingIndx;
+                            }
+                            ElemStr.append(")");
+
+                            std::string Assign = ArrDecl + "[\"" + FullKey + "\"]=" + ElemStr + "\n";
+                            this->Writer_.Write(Assign);
+
+                            PropIndx = PropNode.NextSiblingIndx;
+                          }
+
+                          else if
+                          (
                             PropIsTabl
-                          ) PropIndx = PropNode.NextSiblingIndx;
+                          ) {
+
+                            const auto& NextPropNode = Arena.GetNode(PropNode.NextSiblingIndx);
+                            const auto& NestTable = std::get<TOML::InlineTableNode>(NextPropNode.Payload);
+
+                            InnerSelf(InnerSelf, NestTable.FirstChildIndx, FullKey + "_");
+                            PropIndx = PropNode.NextSiblingIndx;
+                          }
 
                           else [[
                             /* nullAttr */

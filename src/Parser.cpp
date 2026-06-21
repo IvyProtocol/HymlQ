@@ -27,6 +27,15 @@ namespace TOML
 
   auto Parser::Peek() const noexcept -> Token::TokenType
   {
+
+    size_t TempCursor = this->Cursor_;
+
+    while
+    (
+      TempCursor < this->Toks_.size() &&
+      this->Toks_[TempCursor].Type == Token::TokenType::Hash
+    ) TempCursor++;
+
     if
     (
       this->Cursor_ >= this->Toks_.size()
@@ -38,6 +47,13 @@ namespace TOML
   auto Parser::Consume() noexcept
   -> const Token::TokenData&
   {
+
+    while
+    (
+      this->Cursor_ < this->Toks_.size() &&
+      this->Toks_[this->Cursor_].Type == Token::TokenType::Hash
+    ) this->Cursor_++;
+
     return this->Toks_[this->Cursor_++];
   }
 
@@ -601,13 +617,24 @@ namespace TOML
       this->Toks_[this->Cursor_].Type != Token::TokenType::EndOfFile
     ) {
 
-      const auto& Currentotken = this->Toks_[this->Cursor_];
+      const auto& Currentoken = this->Toks_[this->Cursor_];
 
       if
       (
+        Currentoken.Type == Token::TokenType::Hash
+      ) {
+
+        _st_LastParsedLine_ = Currentoken.Lexer_Size_t_Line_;
+        this->Cursor_++;
+        continue;
+      }
+
+      if
+      (
+
         _st_LastParsedLine_ != 0 &&
         (
-          Currentotken.Lexer_Size_t_Line_ - _st_LastParsedLine_ > 1
+          Currentoken.Lexer_Size_t_Line_ - _st_LastParsedLine_ > 1
         )
       ) this->LastTableIdx = this->RootTableIdx;
 

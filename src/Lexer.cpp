@@ -79,7 +79,7 @@ void Lex
       if
       (
         match.get<"comment">()
-      ) {}
+      ) type = Token::TokenType::Hash;
 
       else if
       (
