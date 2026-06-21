@@ -12,8 +12,11 @@ namespace Transpiler
   {
     std::string Formatted(Name);
     for (char& C : Formatted)
-      if (C == '.')
-        C = '_';
+      if
+      (
+        C == '.' ||
+        C == '-'
+      ) C = '_';
 
     return Formatted;
   }

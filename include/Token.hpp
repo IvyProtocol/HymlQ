@@ -6,8 +6,9 @@
 
 namespace Token
 {
-  enum class TokenType : std::int32_t
-  {
+  enum class [[
+    /* nullAttr */
+  ]] TokenType : std::int32_t {
 
     /*
     * Assignment Operator
@@ -28,6 +29,7 @@ namespace Token
     Comma,       // CommaSeparator
     Dot,         // DotSeparator
     Hash,        // HashSeparator
+    Hyphen,
 
     /*
     * Brackets
@@ -71,8 +73,9 @@ namespace Token
 
   };
 
-  class TokenData
-  {
+  class [[
+    /* nullAttr*/
+  ]] TokenData {
     public:
       TokenType Type;
       long : (8 * 4);

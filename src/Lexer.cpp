@@ -14,7 +14,7 @@ static constexpr auto TokenPattern = ctll::fixed_string
   R"(|(?<string_literal>"(?:[^"\\]|\\.)*")|(?<raw_string_literal>'(?:[^'\\]|\\.)*'))"
 
   R"(|(?<ident>[a-zA-Z_][a-zA-Z0-9_]*))"
-  R"(|(?<op>[=&#.:;,\(\)\{\}\[\]\|\$]))"
+  R"(|(?<op>[=&#.:;,\(\)\{\}\[\]\|\$|\-]))"
 };
 
 void Lex(std::span<const char> kC_buffer, const TokenHandler& handleToken)

@@ -8,10 +8,13 @@
 
 namespace TOML
 {
-  enum class NodeIdx : std::uint32_t { None = 0xFFFFFFFF };
+  enum class [[
+    /* nullAttr*/
+  ]] NodeIdx : std::uint32_t { None = 0xFFFFFFFF };
 
-  class KeyValueNode
-  {
+  class [[
+    /* nullAttr */
+  ]] KeyValueNode {
     public:
       std::string_view Key {};
       std::string_view Value {};
@@ -19,8 +22,9 @@ namespace TOML
       std::byte _pad[4]{};
   };
 
-  class TableNode
-  {
+  class [[
+    /* nullAttr*/
+  ]] TableNode {
     public:
       std::string_view name {};
       NodeIdx FirstChildIndx { NodeIdx::None };
@@ -28,24 +32,27 @@ namespace TOML
       std::byte _pad[3]{};
   };
 
-  class ArrayNode
-  {
+  class [[
+    /* nullAttr */
+  ]] ArrayNode {
     public:
       NodeIdx FirstChildIndx { NodeIdx::None };
   };
 
   using ASTNodePayload = std::variant<KeyValueNode, TableNode, ArrayNode>;
 
-  class ASTNode
-  {
+  class [[
+    /* nullAttr */
+  ]] ASTNode {
     public:
       ASTNodePayload Payload;
       NodeIdx NextSiblingIndx { NodeIdx::None };
       std::byte _pad[4]{};
   };
 
-  class ASTArena
-  {
+  class [[
+    /* nullAttr */
+  ]] ASTArena {
     private:
       std::vector<ASTNode> Nodes_ {};
 

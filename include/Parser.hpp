@@ -8,8 +8,9 @@
 namespace TOML
 {
 
-  class Parser
-  {
+  class [[
+    /* nullAttr */
+  ]] Parser {
     private:
       std::string_view Sv_SourceView_ {};
       std::string_view Sv_FileName_ {};

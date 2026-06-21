@@ -14,8 +14,9 @@ namespace Lexer
 using TokenType = Token::TokenType;
 using TokenHandler = std::function<void(const Token::TokenData&)>;
 
-class KeywordPair
-{
+class [[
+  /* nullAttr */
+]] KeywordPair {
 public:
   std::string_view text;
   TokenType type;
@@ -30,6 +31,7 @@ constexpr std::array KeyWords
   KeywordPair{")", TokenType::RightParen},
   KeywordPair{",", TokenType::Comma},
   KeywordPair{".", TokenType::Dot},
+  KeywordPair{"-", TokenType::Hyphen},
   KeywordPair{"=", TokenType::Assign},
   KeywordPair{"[", TokenType::LeftBracket},
   KeywordPair{"]", TokenType::RightBracket},

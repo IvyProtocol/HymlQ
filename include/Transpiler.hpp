@@ -6,7 +6,9 @@
 
 namespace Transpiler
 {
-  class Transpile
+  class [[
+    /* nullAttr */
+  ]] Transpile
   {
     private:
       FileHandler::FileWriter& Writer_;

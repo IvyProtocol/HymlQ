@@ -40,7 +40,6 @@ target_sources( a.out PUBLIC
     src/FileHandler.cpp
     src/Transpiler.cpp
     # src/MetaProgram.cpp
-
 )
 target_include_directories(a.out PRIVATE
     include/

@@ -5,8 +5,9 @@
 
 namespace FileHandler
 {
-  class FileWriter
-  {
+  class [[
+    /* nullAttr */
+  ]] FileWriter {
     private:
       int FileDesc{-1};
 
@@ -19,8 +20,9 @@ namespace FileHandler
       bool Write(std::string_view data) noexcept;
   };
 
-  class FileOpener
-  {
+  class [[
+    /* nullAttr */
+  ]] FileOpener {
     private:
       std::string_view sourceView {};
       [[nodiscard]] constexpr auto load
