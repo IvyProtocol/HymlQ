@@ -1,5 +1,17 @@
-# A simple TOML Parser 
-This repository is made only to convert TOML specific Group and Keys to respectively convert them to Bash Keys.
+# CompTomlQ - A TOML-Parser
+https://github.com/user-attachments/assets/86d194ff-5329-42ca-9179-d25f6a17a8c8
+#
+Made in C++26 and is built on top of [CTRE](https://github.com/hanickadot/compile-time-regular-expressions) (Compile-Time Regular Expression), this is a fast [compiler](https://en.wikipedia.org/wiki/Compiler)/[transpiler](https://en.wikipedia.org/wiki/Source-to-source_compiler) that emits [Bash](https://github.com/gitGNU/gnu_bash) Keys by Parsing [TOML](https://toml.io/en/) keys step by step into phases like Lexicon Analysis, Parsing and walking the Abstract Syntax Tree to the [Bash](https://github.com/gitGNU/gnu_bash)-emitter. And thus produces [TOML](https://toml.io/en/) equivalent data transpiled to Bash for the user.
+
+* The Project is built within the Lanugage Framework
+* It has been made in the standard way by following: Lexicon Analysis, Parsing, Walking Abstract Syntax Tree to the Transpiler.
+* This is a language of its own and is considered a dialect of TOML that doesn't adherent strict behavior.
+* Built on top of C++, this Transpiler provides highly faster conversion and zero abstraction granting O(1) speed. [It may vary based on the system and configuration]
+
+> [!NOTE]
+> Currently, it is only possible to support Table, Inline Table and Nested Arrays. However, it may become very difficult to support Arrays of Table as they can't
+> transpiled directly to Bash and requires key manipulation to store the value. **It is recommended to use Standard Table instead of nested ones as they provide**
+> **as they provide clarity while the transpiler emits bash-keys.**
 
 ## Basic Key-Value Pairs
 The foundation of TOML is simple assignment.
@@ -149,4 +161,3 @@ export STORAGE_PATH="/mnt/data"
 
 ```
 ## 
-A bit of note.. While this is all great. I do want to point out that this transpiler will spit out config.sh. No support for TOML query and write-read yet.
