@@ -8,9 +8,9 @@ project( lib_ullix_
     DESCRIPTION ""
 )
 
-add_executable ( CompTomlQ.out )
+add_executable ( HymlQ.out )
 
-target_compile_options( CompTomlQ.out PRIVATE
+target_compile_options( HymlQ.out PRIVATE
   -Wall
   -Wextra
   -Wpedantic
@@ -33,17 +33,17 @@ target_compile_options( CompTomlQ.out PRIVATE
   -std=c++2c
 )
 
-target_sources( CompTomlQ.out PUBLIC
+target_sources( HymlQ.out PUBLIC
     src/Main.cpp
     src/Lexer.cpp
     src/Parser.cpp
     src/FileHandler.cpp
     src/Transpiler.cpp
 )
-target_include_directories(CompTomlQ.out PRIVATE
+target_include_directories(HymllQ.out PRIVATE
     include/
 )
-target_compile_features (CompTomlQ.out PRIVATE
+target_compile_features (HymlQ.out PRIVATE
     cxx_std_26
 )
 
@@ -54,5 +54,5 @@ endif()
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static")
 
-target_link_options(CompTomlQ.out PRIVATE -lstdc++exp)
-target_link_libraries(CompTomlQ.out PRIVATE -lstdc++exp)
+target_link_options(HymlQ.out PRIVATE -lstdc++exp)
+target_link_libraries(HymlQ.out PRIVATE -lstdc++exp)
