@@ -1,4 +1,4 @@
-# HymllQ - A TOML-Parser
+# HymlQ - A TOML-Parser
 https://github.com/user-attachments/assets/86d194ff-5329-42ca-9179-d25f6a17a8c8
 #
 Made in C++26 and is built on top of [CTRE](https://github.com/hanickadot/compile-time-regular-expressions) (Compile-Time Regular Expression), this is a fast [compiler](https://en.wikipedia.org/wiki/Compiler)/[transpiler](https://en.wikipedia.org/wiki/Source-to-source_compiler) that emits [Bash](https://github.com/gitGNU/gnu_bash) Keys by Parsing [TOML](https://toml.io/en/) keys step by step into phases like Lexicon Analysis, Parsing and walking the Abstract Syntax Tree to the [Bash](https://github.com/gitGNU/gnu_bash)-emitter. And thus produces [TOML](https://toml.io/en/) equivalent data transpiled to Bash for the user.
